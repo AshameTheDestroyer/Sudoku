@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <button id="nav-bar-button">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+
+        <p><a href="#credits">ǝɯɐɥs∀,</a>'s Sudoku</p>
+
+        <nav>
+            <a href="#introduction">Introduction</a>
+            <a href="#guide">Guide</a>
+            <a href="#manual">Manual</a>
+            <a href="#accessibility">Accessibility</a>
+            <a href="#credits">Credits</a>
+        </nav>
+    </header>
+
+    <button id="jump-to-top-button" style="--icon-url: url('Images/arrow_thick.png')"></button>
+
+    <section id="main-section">
+        <header>
+            <p id="difficulty-displayer">Difficulty: Easy</p>
+            <div id="timer-displayer">
+                <p>00:00</p>
+                <button disabled checked></button>
+            </div>
+        </header>
+
+        <section>
+            <div id="grid-table" uninitialized>
+                <p>Game is Paused</p>
+
+                <p>Start a New Puzzle</p>
+
+                <span>
+                    <p>Pick a Difficulty:</p>
+
+                    <div id="difficulty-button-container">
+                        <button>Easy</button>
+                        <button>Medium</button>
+                        <button>Hard</button>
+                        <button>Expert</button>
+                        <button>Evil</button>
+                        <button>Creation</button>
+                    </div>
+                </span>
+            </div>
+
+            <div id="playing-button-container">
+                <div>
+                    <div>
+                        <button id="take-note-button" popUpInfo="off" style="--icon-url: url('Images/pencil.png')"
+                            disabled></button>
+                        <p>Notes</p>
+                    </div>
+                    <div>
+                        <button id="erase-button" popUpInfo="none" style="--icon-url: url('Images/eraser.png')"
+                            disabled></button>
+                        <p>Erase</p>
+                    </div>
+                    <div>
+                        <button id="hint-button" popUpInfo="3" style="--icon-url: url('Images/lamp.png')"
+                            disabled></button>
+                        <p>Hint</p>
+                    </div>
+                </div>
+
+                <div id="digit-button-container"></div>
+
+                <div id="puzzle-button-container">
+                    <button id="new-puzzle-button">New Puzzle</button>
+                    <button id="solve-puzzle-button" hidden>Solve Puzzle</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section id="extra-content-section">
+
+        <div id="introduction">
+            <h1>What's Sudoku?</h1>
+            <p>
+                <q>Sudoku</q> is a logic-based and numerical puzzle game, defined by its grid table.
+                <br><br>
+                In this game you'll be provided by a set of digits in a grid table, then you'll be asked to fill the
+                empty grids, hence solving the puzzle.
+                <br><br>
+                The game is split into <q>9</q> rows, columns, and squares, where each of which contains <q>9</q> grids.
+            </p>
+        </div>
+
+        <div id="guide">
+            <h1>How to Play</h1>
+            <p>
+                The goal of a <q>Sudoku Puzzle</q> is to fill all empty grids with digits from <q>1</q> to <q>9</q>.
+                <br><br>
+                Rules are simple: each row, column, and square, should only contain digits from <q>1</q> to
+                <q>9</q>, without
+                repeating any digit more than once.
+                <br><br>
+                When you start a new <q>Sudoku</q> puzzle, you're asked to choose certain difficulties that range from
+                <q>Easy</q> up
+                until to <q>Evil</q>, except for one of them which's not a real difficulty, and it's called
+                <q>Creation</q>.
+                <br><br>
+                <q>Creation Difficulty</q> allows you to insert your own <q>Sudoku Puzzle</q>, to let the <q>AI</q>
+                solve it for you, however, if you place any digit out of order, it wouldn't work obviously.
+            </p>
+        </div>
+
+        <div id="manual">
+            <h1>Website Guide</h1>
+            <p>
+                Currently the website is just a mere prototype, but it features almost everything of the essentials, but
+                it lacks some features: such as the <q>Navigation Bar Button</q> that's within the webstie header.
+                <br><br>
+                Use the <q>New Puzzle Button</q> to start a new puzzle, and the <q>Solve Puzzle Button</q> to
+                solve the puzzle if you couldn't solve it by yourself.
+                <br><br>
+                Whenever you create a new puzzle, a <q>Timer</q> starts ticking, indicating how long it'll take you to
+                solve
+                the puzzle, however, if you want to stop the <q>Timer</q> you could by toggling the <q>Timer Button</q>,
+                but that'd prevent you from continuing to solve the puzzle, till you toggle it back again.
+            </p>
+
+            <br>
+
+            <div>
+                <div class="icon" style="--icon-url: url('Images/pencil.png')"></div>
+                <p>
+                    <q>Notes Button:</q>
+                    <br>
+                    Lets you toggle between the state of taking notes or assigning digits.
+                    <br><br>
+                    Taking notes can be useful to remember the digit that each grid may have.
+                </p>
+            </div>
+
+            <br>
+
+            <div>
+                <div class="icon" style="--icon-url: url('Images/eraser.png')"></div>
+                <p>
+                    <q>Erase Button:</q>
+                    <br>
+                    Helps you to erase assigned digit from the selected grid when you've gone mistaken.
+                    <br><br>
+                    You cannot erase the grids that're generated by the puzzle though.
+                </p>
+            </div>
+
+            <br>
+
+            <div>
+                <div class="icon" style="--icon-url: url('Images/lamp.png')"></div>
+                <p>
+                    <q>Hint Button:</q>
+                    <br>
+                    Gives you a hint to solve the puzzle by giving you the answer to a random grid, it can also
+                    overwrite a grid you've assigned a wrong value to before.
+                    <br><br>
+                    This button can only be used for a maximum <q>3</q> numbers of time for each new puzzle.
+                </p>
+            </div>
+        </div>
+
+        <div id="accessibility">
+            <h1>Accessibility</h1>
+            <p>
+                If you're on a mobile device, you're likely to have no keyboard, so to fix this, the I introduced a set
+                of keypads to allow accessibility for everyone.
+                <br><br>
+                However, if you have a keyboard, you may have the luxury to use those shortcuts:
+            </p>
+            <ol>
+                <li>
+                    <kbd style="--icon-url: url('Images/arrow_thick.png'); --rotation: 180deg;"></kbd>
+                    <p>or</p>
+                    <kbd>W</kbd>
+                    <p>to move upwards.</p>
+                </li>
+
+                <li>
+                    <kbd style="--icon-url: url('Images/arrow_thick.png');  --rotation: 0deg;"></kbd>
+                    <p>or</p>
+                    <kbd>S</kbd>
+                    <p>to move downwards.</p>
+                </li>
+
+                <li>
+                    <kbd style="--icon-url: url('Images/arrow_thick.png');  --rotation: 270deg;"></kbd>
+                    <p>or</p>
+                    <kbd>D</kbd>
+                    <p>to move to right.</p>
+                </li>
+
+                <li>
+                    <kbd style="--icon-url: url('Images/arrow_thick.png');  --rotation: 90deg;"></kbd>
+                    <p>or</p>
+                    <kbd>A</kbd>
+                    <p>to move to left.</p>
+                </li>
+
+                <br>
+
+                <li>
+                    <kbd>Enter</kbd>
+                    <p>or</p>
+                    <kbd>Space</kbd>
+                    <p>to select or deselect a grid.</p>
+                </li>
+
+                <li>
+                    <kbd>ESC</kbd>
+                    <p>to deselect a grid.</p>
+                </li>
+
+                <br>
+
+                <li>
+                    <p>All of these</p>
+                    <kbd>1</kbd>
+                    <kbd>2</kbd>
+                    <kbd>3</kbd>
+                    <kbd>4</kbd>
+                    <kbd>5</kbd>
+                    <kbd>6</kbd>
+                    <kbd>7</kbd>
+                    <kbd>8</kbd>
+                    <kbd>9</kbd>
+                    <p>to insert a digit to the selected grid.</p>
+                </li>
+
+                <br>
+
+                <li>
+                    <kbd>+</kbd>
+                    <p>to toggle between insertion and taking notes.</p>
+                </li>
+
+                <li>
+                    <kbd>-</kbd>
+                    <p>or</p>
+                    <kbd>Delete</kbd>
+                    <p>or</p>
+                    <kbd>Backspace</kbd>
+                    <p>to erase the value of a grid.</p>
+                </li>
+
+                <li>
+                    <kbd>/</kbd>
+                    <p>to ask for a hint.</p>
+                </li>
+
+                <li>
+                    <kbd>=</kbd>
+                    <p>to give up let the <q>AI</q> solve the puzzle.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div id="credits">
+            <h1>Creator of the Website</h1>
+            <p>
+                All credits go to <q>ǝɯɐɥs∀,</q>, AKA:
+                <a href="https://github.com/AshameTheDestroyer/" target="_blank">@AshameTheDestroyer</a>.
+                <br><br>
+                You can visit my <q>GitHub</q> profile by clicking the username above.
+                <br><br>
+                Huge thanks for visiting my website project.
+            </p>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
