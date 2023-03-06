@@ -467,6 +467,7 @@ body #main-section>section {
 }
 
 #grid-table>div>div.generated {
+    color: #FFF8;
     background-color: #FFF3;
 }
 

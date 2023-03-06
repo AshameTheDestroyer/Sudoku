@@ -524,7 +524,7 @@ function CreateGridKeydownEvent(grid) {
  * @param {String} digitValue The value of the digit that'll be inserted.
  */
 function InsertDigitToGrid(grid, digitValue) {
-    if (IsTakingNotes && grid.value != -1) { return; }
+    if (grid.generated || (IsTakingNotes && grid.value != -1)) { return; }
 
     let digitIndex = DIGITS.indexOf(digitValue);
 
